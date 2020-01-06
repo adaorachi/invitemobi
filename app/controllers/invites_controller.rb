@@ -5,12 +5,10 @@ class InvitesController < ApplicationController
 
   def index
     @all_invites = EventAttendee.where('attendee_id = ? AND status != ?', current_user, 1)
-    @invitation = EventAttendee.new
   end
 
   def new
     @invite = Event.find(params[:id])
-    @invitation = EventAttendee.new
   end
 
   def create
@@ -19,26 +17,16 @@ class InvitesController < ApplicationController
     @invitation = @invite.event_attendees.build(attendee_id: invitation_params)
     if @invitation.save
       flash.now['alert-success'] = 'Invitation has been sent successfully!'
-      render :new
     else
       flash.now['alert-danger'] = 'You have to select a Attendee'
-      render :new
     end
-
-    respond_to do |format|
-      format.html { @invitation }
-    end
+    render :new
   end
 
   def show
     @accept_invite = EventAttendee.find(params[:id])
     @invited = EventAttendee.where('id = ? AND attendee_id = ? ', @accept_invite, current_user).take
   end
-
-  # def edit
-  #   @accept_invite = EventAttendee.find(params[:id])
-  #   @invited = EventAttendee.where('id = ? AND attendee_id = ? ', @accept_invite, current_user).take
-  # end
 
   def update
     @accept_invite = EventAttendee.find(params[:id])
