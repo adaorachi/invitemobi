@@ -3,7 +3,6 @@ AllCops:
     - "bin/*"
     - "db/**/*"
     - "config/**/*"
-    - "spec/**/*"
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
