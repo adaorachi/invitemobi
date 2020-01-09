@@ -6,6 +6,6 @@ class EventAttendee < ApplicationRecord
 
   validates :attendee_id, presence: true
   validates_uniqueness_of :attendee_id, scope: :attended_event_id
- 
+
   enum status: [:attending, :declined, :unset]
 end
