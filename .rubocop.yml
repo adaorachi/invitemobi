@@ -19,7 +19,8 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  ExcludedMethods: ["describe", "scenario"]
+  Exclude:
+    - 'spec/**/*.rb'
 
 Style/Documentation:
   Enabled: false
