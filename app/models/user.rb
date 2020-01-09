@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :created_event, foreign_key: 'creator_id', class_name: 'Event', dependent: :destroy
   has_many :event_attendees, foreign_key: 'attendee_id', dependent: :destroy
-  has_many :attended_events, through: :event_attendees, source: :event
+  has_many :attended_events, through: :event_attendees
 
   before_save :downcase_email_username
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze

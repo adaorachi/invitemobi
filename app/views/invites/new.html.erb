@@ -20,7 +20,7 @@
     <% User.where.not(id: current_user.id).each do |user| %>
       <tr>
         <%= f.hidden_field :id, value: user.id  %>
-        <td><%= f.radio_button :attendee_id, user.id %></td> 
+        <td><%= f.radio_button :attendee_id, user.id, id: "attendee_id_#{user.id}" %></td> 
         <td><%= gravatar_for(user, size: 40) %></td>          
         <td><%= user.name %></td>
         <td><%= user.username %></td>
