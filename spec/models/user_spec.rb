@@ -15,4 +15,3 @@ RSpec.describe User, type: :model do
     it { should have_many(:attended_events).through(:event_attendees) }
   end
 end
-
