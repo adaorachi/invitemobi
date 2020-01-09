@@ -16,7 +16,8 @@ class InvitesController < ApplicationController
 
     @invitation = @invite.event_attendees.build(attendee_id: invitation_params)
     if @invitation.save
-      flash.now['alert-success'] = 'Invitation has been sent successfully!'
+      invitee = User.find_by(id: invitation_params)
+      flash.now['alert-success'] = "Invitation has been successfully sent to #{invitee.name}!"
     else
       flash.now['alert-danger'] = 'You have to select a Attendee'
     end

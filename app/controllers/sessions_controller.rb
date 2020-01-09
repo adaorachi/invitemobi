@@ -17,7 +17,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    user = current_user
     log_out
     redirect_to root_path
+    flash['alert-success'] = "You have successfully logged out #{user.name}!"
   end
 end
