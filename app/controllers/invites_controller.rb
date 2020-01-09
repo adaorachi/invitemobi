@@ -58,18 +58,18 @@ class InvitesController < ApplicationController
     params[:event_attendee][:attendee_id]
   end
 
-  def correct_event_invitee
-    @accept_invite = EventAttendee.find_by(id: params[:id])
-    if @accept_invite.nil? || @accept_invite.attendee != current_user
-      redirect_to dashboard_path
-    end
-  end
+  # def correct_event_invitee
+  #   @accept_invite = EventAttendee.find_by(id: params[:id])
+  #   if @accept_invite.nil? || @accept_invite.attendee != current_user
+  #     redirect_to dashboard_path
+  #   end
+  # end
 
-  def correct_event_creator
-    @invite = Event.find_by(id: params[:id])
-    if @invite.nil? || @invite.creator != current_user
-      redirect_to dashboard_path
-    end
-  end
+  # def correct_event_creator
+  #   @invite = Event.find_by(id: params[:id])
+  #   if @invite.nil? || @invite.creator != current_user
+  #     redirect_to dashboard_path
+  #   end
+  # end
 
 end
